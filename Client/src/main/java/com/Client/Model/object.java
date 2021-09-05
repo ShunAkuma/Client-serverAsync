@@ -4,13 +4,13 @@ package com.Client.Model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
+
 
 public class object implements Serializable {
     private Double lat;
     private Double lng;
-    private Long lead_id;
-    private Long count = 0L;
+    private Integer lead_id;
+    private Integer count = 0;
     public object() {
         count++;
         this.lead_id = count;

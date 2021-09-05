@@ -12,28 +12,27 @@ import javax.persistence.*;
 @Setter
 @Table(name = "object")
 @Async
-public class Object {
+public class Objects {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long lead_id = 0L;
 
+    private Integer lead_id;
 
     private Double lat;
 
     private Double lng;
 
-    public Object() {
+    public Objects() {
     }
 
-    public Object(Double lat, Double lng) {
+    public Objects(Double lat, Double lng) {
         this.lat = lat;
         this.lng = lng;
     }
 
-    public Object(Long lead_id, Double lat, Double lng) {
+    public Objects(Integer lead_id, Double lat, Double lng) {
         this.lead_id = lead_id;
         this.lat = lat;
         this.lng = lng;

@@ -1,10 +1,9 @@
 package com.java.Clientserver.Service;
 
-import com.java.Clientserver.Model.Object;
+import com.java.Clientserver.Model.Objects;
 import com.java.Clientserver.Repository.ObjectRepository;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileService {
@@ -15,12 +14,9 @@ public class FileService {
     }
 
     @Async
-    public Object saveToDataBase(Object object){
+    public Objects saveToDataBase(Objects object){
 
         return objectRepository.save(object);
     }
 
-    public Object dessializer(MultipartFile file){
-        return new Object();
-    }
 }
