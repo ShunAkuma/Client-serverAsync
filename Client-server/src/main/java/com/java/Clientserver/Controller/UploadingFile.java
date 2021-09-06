@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
 @RestController
 @RequestMapping(value = "/main/upload")
 public class UploadingFile {
@@ -19,7 +21,7 @@ public class UploadingFile {
     @PostMapping(value = "/test")
     @Async
     public ResponseEntity receivingFiles(@RequestBody perobject object) throws InterruptedException {
-//        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(5);
         fileService.saveToDataBase(object);
         return ResponseEntity.ok("Upload and save success!");
     }
