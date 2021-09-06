@@ -10,9 +10,6 @@ public class main {
 
         SendPostRequest post = new SendPostRequest();
         post.PostRequest();
-
-
-
-
+        
     }
 }
