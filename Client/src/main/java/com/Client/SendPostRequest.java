@@ -20,10 +20,7 @@ public class SendPostRequest {
         OutputStream os = null;
 
 
-        com.Client.Model.object modelobj = new object();
 
-        var objectMapper = new ObjectMapper();
-        String requesBody = objectMapper.writeValueAsString(modelobj);
 
         InputStreamReader reader = null;
         BufferedReader bfr = null;
@@ -31,7 +28,10 @@ public class SendPostRequest {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i  = 0;i <=10;i++) {
             try {
+                com.Client.Model.object modelobj = new object();
 
+                var objectMapper = new ObjectMapper();
+                String requesBody = objectMapper.writeValueAsString(modelobj);
                 url = new URL(urlAdress3);
                 httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
