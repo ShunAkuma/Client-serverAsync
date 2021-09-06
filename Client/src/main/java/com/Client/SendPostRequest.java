@@ -1,9 +1,7 @@
 package com.Client;
 
 import com.Client.Model.object;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,8 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SendPostRequest {
 
@@ -33,48 +29,49 @@ public class SendPostRequest {
         BufferedReader bfr = null;
 
         StringBuilder stringBuilder = new StringBuilder();
-
-        try {
-
-            url = new URL(urlAdress3);
-            httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
-
-
-            httpURLConnection.addRequestProperty("User-Agent","Google");
-            httpURLConnection.addRequestProperty("Content-Type","application/json");
-
-            httpURLConnection.setConnectTimeout(200);
-            httpURLConnection.setReadTimeout(200);
-
-            httpURLConnection.connect();
-
+        for (int i  = 0;i <=10;i++) {
             try {
-                os = httpURLConnection.getOutputStream();
-                os.write(requesBody.toString().getBytes(StandardCharsets.UTF_8));
 
-            }catch (Exception ex){
-                ex.printStackTrace();
-            }
-            if (HttpURLConnection.HTTP_OK == httpURLConnection.getResponseCode()){
-                reader = new InputStreamReader(httpURLConnection.getInputStream());
-                bfr = new BufferedReader(reader);
-                String line;
-                while ((line = bfr.readLine()) != null){
-                    stringBuilder.append(line);
+                url = new URL(urlAdress3);
+                httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+
+                httpURLConnection.addRequestProperty("User-Agent", "Google");
+                httpURLConnection.addRequestProperty("Content-Type", "application/json");
+
+                httpURLConnection.setConnectTimeout(200);
+                httpURLConnection.setReadTimeout(200);
+
+                httpURLConnection.connect();
+
+                try {
+                    os = httpURLConnection.getOutputStream();
+                    os.write(requesBody.toString().getBytes(StandardCharsets.UTF_8));
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
+                if (HttpURLConnection.HTTP_OK == httpURLConnection.getResponseCode()) {
+                    reader = new InputStreamReader(httpURLConnection.getInputStream());
+                    bfr = new BufferedReader(reader);
+                    String line;
+                    while ((line = bfr.readLine()) != null) {
+                        stringBuilder.append(line);
+                    }
+                }
+
+                System.out.println(stringBuilder);
+
+            } catch (MalformedURLException ex) {
+
+            } finally {
+                reader.close();
+                bfr.close();
+                os.close();
             }
-
-            System.out.println(stringBuilder);
-
-        }catch (MalformedURLException ex){
-
-        }finally {
-            reader.close();
-            bfr.close();
-            os.close();
         }
     }
 }
