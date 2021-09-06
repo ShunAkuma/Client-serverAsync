@@ -1,6 +1,6 @@
 package com.java.Clientserver.Service;
 
-import com.java.Clientserver.Model.Objects;
+import com.java.Clientserver.Model.perobject;
 import com.java.Clientserver.Repository.ObjectRepository;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class FileService {
     }
 
     @Async
-    public Objects saveToDataBase(Objects object){
+    public perobject saveToDataBase(perobject object){
 
         return objectRepository.save(object);
     }

@@ -1,6 +1,6 @@
 package com.java.Clientserver.Controller;
 
-import com.java.Clientserver.Model.Objects;
+import com.java.Clientserver.Model.perobject;
 import com.java.Clientserver.Service.FileService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
@@ -18,7 +18,7 @@ public class UploadingFile {
 
     @PostMapping(value = "/test")
     @Async
-    public ResponseEntity receivingFiles(@RequestBody Objects object) throws InterruptedException {
+    public ResponseEntity receivingFiles(@RequestBody perobject object) throws InterruptedException {
 //        TimeUnit.SECONDS.sleep(5);
         fileService.saveToDataBase(object);
         return ResponseEntity.ok("Upload and save success!");
